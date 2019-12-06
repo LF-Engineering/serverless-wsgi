@@ -103,7 +103,6 @@ def get_query_string(event):
     else:
         return {}
 
-
 def encode_query_string(event):
     multi = get_multi_querystring(event)
     if multi:

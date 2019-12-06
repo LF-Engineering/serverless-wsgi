@@ -83,18 +83,26 @@ def get_path(event):
 
 
 def get_multi_querystring(event):
-    if 'multiValueQueryStringParameters' in event:
+    if 'multiValueQueryStringParameters' in event and \
+            event['multiValueQueryStringParameters'] is not None and \
+            len(event['multiValueQueryStringParameters'].keys()) > 0:
         return event.get(u"multiValueQueryStringParameters")
-    elif 'multiValueQuery' in event:
+    elif 'multiValueQuery' in event and \
+            event['multiValueQuery'] is not None and \
+            len(event['multiValueQuery'].keys()) > 0:
         return event.get(u"multiValueQuery")
     else:
         return None
 
 
 def get_query_string(event):
-    if 'queryStringParameters' in event:
+    if 'queryStringParameters' in event and \
+            event['queryStringParameters'] is not None and \
+            len(event['queryStringParameters'].keys()) > 0:
         return event.get(u"queryStringParameters")
-    elif 'query' in event:
+    elif 'query' in event and \
+            event['query'] is not None and \
+            len(event['query'].keys()) > 0:
         return event.get(u"query")
     else:
         return {}
